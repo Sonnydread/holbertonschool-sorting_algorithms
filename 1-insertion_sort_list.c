@@ -18,27 +18,25 @@ while (current != NULL)
 {
 key = current;
 prev = current->prev;
+temp = current->next;
 
 while (prev != NULL && prev->n > key->n)
 {
-temp = key->next;
-
-prev->next = key;
-key->prev = prev;
-key->next = temp;
-if (temp != NULL)
-temp->prev = key;
+prev->next = key->next;
+if (key->next != NULL)
+key->next->prev = prev;
+key->prev = prev->prev;
+key->next = prev;
+prev->prev = key;
 
 if (prev->prev != NULL)
-prev->prev->next = prev;
+prev->prev->next = key;
 else
-*list = prev;
+*list = key;
 
-prev->prev = key;
-prev = prev->prev;
+prev = key->prev;
 print_list(*list);
 }
-
-current = current->next;
+current = temp;
 }
 }
