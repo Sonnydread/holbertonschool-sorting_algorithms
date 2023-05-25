@@ -15,13 +15,13 @@ if (array == NULL || size <= 1)
 return;
 
 R = 0;
-while (R < size - 1)
+while (size - 1 > R)
 {
 min_index = R;
 W = R + 1;
-while (W < size)
+while (size > W)
 {
-if (array[W] < array[min_index])
+if (array[min_index] > array[W])
 min_index = W;
 W++;
 }
