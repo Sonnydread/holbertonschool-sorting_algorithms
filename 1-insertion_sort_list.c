@@ -19,21 +19,22 @@ listint_t *prev = current->prev;
 
 while (prev != NULL && prev->n > key->n)
 {
-prev->next = key->next;
-if (key->next != NULL)
-key->next->prev = prev;
-key->prev = prev->prev;
-key->next = prev;
-prev->prev = key;
+listint_t *temp = key->next;
 
-if (key->prev != NULL)
-key->prev->next = key;
+prev->next = key;
+key->prev = prev;
+key->next = temp;
+if (temp != NULL)
+temp->prev = key;
+
+if (prev->prev != NULL)
+prev->prev->next = prev;
 else
-*list = key;
-prev = key->prev;
+*list = prev;
+prev->prev = key;
+prev = prev->prev;
 print_list(*list);
 }
-
 current = current->next;
 }
 }
