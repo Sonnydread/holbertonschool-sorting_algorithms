@@ -1,42 +1,45 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - sort a linked list in ascending order
+ * insertion_sort_list - sort a linked list in ascending
  * @list: The linked list
  * Return: void
  */
 void insertion_sort_list(listint_t **list)
-
 {
-if (list == NULL || *list == NULL || (*list)->next == NULL)
+
+listint_t *top = NULL, *tmp = NULL, *aux = NULL;
+
+if (!list)
 return;
-
-listint_t *current = (*list)->next;
-while (current != NULL)
+top = *list;
+while (top)
 {
-listint_t *key = current;
-listint_t *prev = current->prev;
-
-while (prev != NULL && prev->n > key->n)
+tmp = top;
+while (tmp->prev && tmp->n < tmp->prev->n)
 {
-listint_t *temp = key->prev;
-
-prev->next = key->next;
-if (key->next != NULL)
-key->next->prev = prev;
-key->prev = prev->prev;
-key->next = prev;
-prev->prev = key;
-
-if (temp != NULL)
-temp->next = key;
+aux = tmp;
+tmp = tmp->prev;
+tmp->next = aux->next;
+if (aux->next)
+aux->next->prev = tmp;
+aux->next = tmp;
+aux->prev = tmp->prev;
+if (tmp->prev)
+{
+tmp->prev->next = aux;
+tmp->prev = aux;
+}
 else
-*list = key;
-
-prev = prev->prev;
-print_list(*list);
+tmp->prev = aux;
+while (aux->prev)
+aux = aux->prev;
+print_list(aux);
+tmp = tmp->prev;
 }
-
-current = current->next;
+top = top->next;
 }
+while (tmp->prev)
+tmp = tmp->prev;
+(*list) = tmp;
 }
