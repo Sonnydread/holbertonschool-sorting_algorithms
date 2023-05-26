@@ -32,7 +32,7 @@ if (low < high)
 {
 pivot = array[high];
 H = low - 1;
-for (K = low; high - 1 >= K; K++)
+for (K = low; K <= high; K++)
 {
 if (array[K] < pivot)
 {
@@ -54,6 +54,6 @@ array[high] = temp;
 print_array(array, size);
 }
 quick_sort_recursive(array, low, H, size);
-quick_sort_recursive(array, H + 2, high, size);
+quick_sort_recursive(array, H + 1, high, size);
 }
 }
