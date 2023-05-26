@@ -3,11 +3,11 @@
 void quick_sort_recursive(int *array, int low, int high, size_t size);
 
 /**
- * quick_sort - sorts an array of integers in ascending order
- * @array: array of integers
- * @size: size of the array
- * Return: void
- */
+* quick_sort - sorts an array of integers in ascending order
+* @array: array of integers
+* @size: size of the array
+* Return: void
+*/
 void quick_sort(int *array, size_t size)
 {
 if (array == NULL || size <= 1)
@@ -17,13 +17,13 @@ quick_sort_recursive(array, 0, size - 1, size);
 }
 
 /**
- * quick_sort_recursive - recursive function to perform quicksort
- * @array: array of integers
- * @low: starting index
- * @high: ending index
- * @size: size of the array
- * Return: void
- */
+* quick_sort_recursive - recursive function to perform quicksort
+* @array: array of integers
+* @low: starting index
+* @high: ending index
+* @size: size of the array
+* Return: void
+*/
 void quick_sort_recursive(int *array, int low, int high, size_t size)
 {
 int pivot, H, K, temp;
