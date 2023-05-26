@@ -32,7 +32,7 @@ if (low < high)
 {
 pivot = array[high];
 H = low - 1;
-for (K = low; K <= high; K++)
+for (K = low; high > K; K++)
 {
 if (array[K] < pivot)
 {
